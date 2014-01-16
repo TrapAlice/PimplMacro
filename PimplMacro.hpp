@@ -11,13 +11,13 @@ using std::unique_ptr;
 #define INIT_PRIVATE_VARIABLES(...) m(new PrivateVariables(__VA_ARGS__))
 
 #define HAS_PRIVATE_FUNCTIONS struct PrivateFunctions; friend PrivateFunctions;
-#define PRIVATE_FUNCTIONS(CLASS, ...)\
+#define PRIVATE_FUNCTIONS(CLASS)\
 	using PrivateClassType = CLASS;\
-	struct CLASS::PrivateFunctions{\
-		__VA_ARGS__\
-	};
+	struct CLASS::PrivateFunctions
+
 #define PRIVATE_FUNCTION_DECLARE(RETURN, NAME, ...)\
 	static RETURN NAME(PrivateClassType* This, ##__VA_ARGS__)
+
 #define PRIVATE(FUNCTION, ...) PrivateFunctions::FUNCTION(this, ##__VA_ARGS__);
 
 #endif
